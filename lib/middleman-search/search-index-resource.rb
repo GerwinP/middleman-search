@@ -122,6 +122,8 @@ module Middleman
           Nokogiri::HTML(html).xpath("//text()").text
         when 'url'
           resource.url
+        when 'date'
+          resource.date
         else
           value = resource.data.send(field) || resource.metadata.fetch(:options, {}).fetch(field, nil)
           value ? Array(value).compact.join(" ") : nil
