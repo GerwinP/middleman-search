@@ -53,16 +53,16 @@
     }
 
     /* register specific locale function */
-    lunr.du = function() {
+    lunr.nl = function() {
       this.pipeline.reset();
       this.pipeline.add(
-        lunr.du.stopWordFilter,
-        lunr.du.stemmer
+        lunr.nl.stopWordFilter,
+        lunr.nl.stemmer
       );
     };
 
     /* lunr stemmer function */
-    lunr.du.stemmer = (function() {
+    lunr.nl.stemmer = (function() {
       /* create the wrapped stemmer object */
       var Among = lunr.stemmerSupport.Among,
         SnowballProgram = lunr.stemmerSupport.SnowballProgram,
@@ -415,23 +415,23 @@
       }
     })();
 
-    lunr.Pipeline.registerFunction(lunr.du.stemmer, 'stemmer-du');
+    lunr.Pipeline.registerFunction(lunr.nl.stemmer, 'stemmer-nl');
 
     /* stop word filter function */
-    lunr.du.stopWordFilter = function(token) {
-      if (lunr.du.stopWordFilter.stopWords.indexOf(token) === -1) {
+    lunr.nl.stopWordFilter = function(token) {
+      if (lunr.nl.stopWordFilter.stopWords.indexOf(token) === -1) {
         return token;
       }
     };
 
-    lunr.du.stopWordFilter.stopWords = new lunr.SortedSet();
-    lunr.du.stopWordFilter.stopWords.length = 103;
+    lunr.nl.stopWordFilter.stopWords = new lunr.SortedSet();
+    lunr.nl.stopWordFilter.stopWords.length = 103;
 
     // The space at the beginning is crucial: It marks the empty string
     // as a stop word. lunr.js crashes during search when documents
     // processed by the pipeline still contain the empty string.
-    lunr.du.stopWordFilter.stopWords.elements = '  aan al alles als altijd andere ben bij daar dan dat de der deze die dit doch doen door dus een eens en er ge geen geweest haar had heb hebben heeft hem het hier hij hoe hun iemand iets ik in is ja je kan kon kunnen maar me meer men met mij mijn moet na naar niet niets nog nu of om omdat onder ons ook op over reeds te tegen toch toen tot u uit uw van veel voor want waren was wat werd wezen wie wil worden wordt zal ze zelf zich zij zijn zo zonder zou'.split(' ');
+    lunr.nl.stopWordFilter.stopWords.elements = '  aan al alles als altijd andere ben bij daar dan dat de der deze die dit doch doen door dus een eens en er ge geen geweest haar had heb hebben heeft hem het hier hij hoe hun iemand iets ik in is ja je kan kon kunnen maar me meer men met mij mijn moet na naar niet niets nog nu of om omdat onder ons ook op over reeds te tegen toch toen tot u uit uw van veel voor want waren was wat werd wezen wie wil worden wordt zal ze zelf zich zij zijn zo zonder zou'.split(' ');
 
-    lunr.Pipeline.registerFunction(lunr.du.stopWordFilter, 'stopWordFilter-du');
+    lunr.Pipeline.registerFunction(lunr.nl.stopWordFilter, 'stopWordFilter-nl');
   };
 }))
